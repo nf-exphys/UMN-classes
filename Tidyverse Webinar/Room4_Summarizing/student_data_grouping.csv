@@ -1,0 +1,11 @@
+Student_ID,Workshop,Q1_MultipleChoice,Q2_MultipleChoice,Q3_ShortAnswer,Q4_ShortAnswer
+1,Into the Mud,0,1,4,5
+2,Into the Mud,1,1,4,4
+3,None,1,1,3,5
+4,None,1,1,4,2.5
+5,None,1,1,NA,NA
+6,None,1,1,0,4
+7,Into the Mud,NA,1,4,5
+8,None,0,0,4,0
+9,Into the Mud,1,1,4,5
+10,Into the Mud,1,1,4,5

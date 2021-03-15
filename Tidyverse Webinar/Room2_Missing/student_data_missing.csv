@@ -1,0 +1,12 @@
+Student_ID,Department,Q1_MultipleChoice,Q2_MultipleChoice,Q3_ShortAnswer,Q4_ShortAnswer
+1,EdPsych,0,NA,4,5
+2,FamSocSci,1,1,4,4
+3,ChildDev,1,1,3,5
+4,OLPD,1,1,4,2.5
+5,SocialWork,1,1,NA,NA
+6,ChildDev,1,1,0,4
+7,EdPsych,NA,1,4,5
+8,C&I,0,0,4,0
+9,OLPD,1,1,4,5
+10,Kinesiology,1,1,4,5
+22,C&I,1,1,4,4
