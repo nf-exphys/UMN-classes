@@ -45,10 +45,43 @@ custom_grep(curr_PM_record, tag = "Affiliation")
 
 
 #### Making it work for me ####
+library(easyPubMed); library(tidyverse)
 
-my_query <- 'Damiano Fantini[AU] AND "2018"[PDAT]'
+#search for molecular exercise training, filter by last 5 years
+my_query <- '(("exercise"[MeSH Terms] OR 
+"exercise"[All Fields] OR 
+("exercise"[All Fields] AND "training"[All Fields]) OR 
+"exercise training"[All Fields]) AND ("molecular"[All Fields] OR 
+"moleculars"[All Fields]) AND ("muscle, skeletal"[MeSH Terms] OR 
+("muscle"[All Fields] AND "skeletal"[All Fields]) OR 
+"skeletal muscle"[All Fields] OR ("skeletal"[All Fields] AND "muscle"[All Fields]))) AND (y_5[Filter])'
+
+#Search entrez?  
 my_entrez_id <- get_pubmed_ids(my_query)
+
+#get data from pubmed
 my_abstracts_xml <- fetch_pubmed_data(pubmed_id_list = my_entrez_id)
-curr_PM_record <- my_PM_list[1]
+
 my_PM_list <- articles_to_list(pubmed_data = my_abstracts_xml)
-custom_grep(curr_PM_record, tag = "Affiliation")
+
+length(my_PM_list)
+
+affiliations <- lapply(my_PM_list, custom_grep, tag = "Affiliation")
+
+states <- "Pennsylvania | DC | Virginia | Delaware | Maryland | New Jersey | West Virginia"
+
+for (i in 1:length(affiliations)){
+  affil_w_states <- grepl(pattern = states,affiliations[[i]])
+  if (TRUE %in% affil_w_states){
+    affiliations[[i]] <- affiliations[[i]]
+  } else {affiliations[[i]] <- NA}
+  
+}
+
+no_state_affil <- which(is.na(affiliations))
+refined_affil <- affiliations[-no_state_affil]
+
+#affil_w_states <- lapply(affiliations, str_detect, pattern = states)
+which(affil_w_states == T)
+str_replace_all()
+which("__here__" %in% affil_w_states)
